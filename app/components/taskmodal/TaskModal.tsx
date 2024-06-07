@@ -1,7 +1,11 @@
 "use client"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CustomInputField from "../custominputfield/CustomInputField";
 import CustomButton from "../custombutton/CustomButton";
+import { TaskContext } from "@/app/context/TaskContext";
+import { TaskContextType } from "@/app/types/types";
+import { v4 as uuidv4 } from 'uuid';
+
 
 interface ModalProps {
   isVisible: boolean;
@@ -13,13 +17,23 @@ const TaskModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
+  const { addTask } = useContext(TaskContext) as TaskContextType;
 
   const handleChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setter(event.target.value);
   };
 
-  const addTask = () => {
-    console.log('addTask');
+  const handleAddTask = () => {
+    const newTask = {
+      id: uuidv4(), 
+      name: taskName,
+      description: taskDescription,
+      date: new Date().toISOString(),
+      isCompleted: false,
+      isActive: true,
+    };
+    addTask(newTask);
+    onClose();
   }
 
   return (
@@ -55,7 +69,7 @@ const TaskModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
             />
             <CustomButton
               text="Add Task"
-              onClick={addTask}
+              onClick={handleAddTask}
               classname="bg-customBlue flex-grow  rounded-md sm:px-10 px-5 py-3 
                 leading-none tracking-wide sm:text-[15px] text-[12px] 
                 text-white hover:bg-customBlue/80"

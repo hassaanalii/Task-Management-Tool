@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
+import TaskProvider from "./context/TaskContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Navbar />
-        {children}
+        <TaskProvider>
+          <Navbar />
+          {children}
+        </TaskProvider>
       </body>
     </html>
   );

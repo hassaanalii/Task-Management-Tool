@@ -12,7 +12,7 @@ const Navbar = () => {
     const pathname = usePathname()
     console.log(pathname)
     return (
-        <nav className="bg-customGray">
+        <nav className="bg-customGray/40">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
