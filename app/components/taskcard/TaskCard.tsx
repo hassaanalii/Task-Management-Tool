@@ -28,9 +28,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
                 </div>
 
             </div>
-            <p className="font-light leading-none text-justify text-[14px]">{task.description}</p>
-            <div className="flex items-center justify-between">
-                <div className="flex gap-3">
+            <p className="font-light leading-none text-justify tracking-wide md:text-[14px] text-[12px]">{task.description}</p>
+            <div className="flex md:flex-row flex-col md:gap-0 gap-4 md:items-center md:justify-between">
+                <div className="flex md:flex-row flex-col gap-3">
                     <p className="font-semibold text-[14px]">Status: <span className={`px-3 text-[12px] ml-2 font-medium py-1 rounded-md ${task.isActive ? "bg-customYellow/30" : "bg-customGreen/30"} `}>{task.isActive ? "Active" : "Completed"}</span></p>
                     {
                         task.isActive && (

@@ -21,4 +21,10 @@ export interface TaskCardProps {
 export interface ToDoBannerProps {
     setFilter: (filter: string) => void;
 }
-  
+
+
+export interface StatusCardProps {
+    title: string;
+    count: number;
+    color: string;
+}

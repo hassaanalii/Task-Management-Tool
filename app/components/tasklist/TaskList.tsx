@@ -23,7 +23,7 @@ const TaskList = () => {
                     {filteredTasks.length === 0 ? (
                         <p className="text-center text-[30px] font-bold tracking-widest text-red-500 leading-none mt-20">No tasks available!</p>
                     ) : (
-                        <div className="rounded-lg bg-customGray/10 py-10 px-10">
+                        <div className="rounded-lg bg-customGray/10 md:py-10 py-5 md:px-10 px-5">
                             {
                                 filteredTasks.map((task) => (
                                     <TaskCard task={task} />
